@@ -75,7 +75,7 @@ RSpec.describe "Articles", type: :request do
       end
 
       it "successfully deletes article" do
-        expect(response.status).to eq 302 # After delete controller is redirecting to other path than referer ("/articles/:id" => "/articles")
+        expect(response.status).to eq 302 # After delete controller will redirect to other path than referer, in this case "/articles"
         flash_message = "Article has been deleted"
         expect(flash[:success]).to eq flash_message
       end
