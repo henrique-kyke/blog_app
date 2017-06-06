@@ -15,7 +15,7 @@
 </article>
 <hr/>
 <div class="col-md-12">
-  <%= form_for [@article, @comment], :html => {class: "form-horizontal", role: "form"} do |f|%>
+  <%= form_for [@article, @comment], remote: true, :html => {class: "form-horizontal", role: "form"} do |f|%>
     <% if @comment.errors.any? %>
       <div class="panel panel-danger col-md-offset-1">
         <div class="panel-heading">
@@ -54,7 +54,8 @@
   </header>
   <div class="col-md-10">
     <% if @article.comments.any? %>
-      <% persisted_comments(@comments).each do |comment| %>
+      <div id="messages">
+        <% persisted_comments(@comments).each do |comment| %>
         <div class="comment-body">
           <%= comment.body%>
         </div>
@@ -64,6 +65,7 @@
         </div>
         <hr/>
       <% end %>
+      </div>
     <% else %>
       There are no comments to show.
     <% end %>
